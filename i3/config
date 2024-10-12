@@ -549,6 +549,7 @@ set $lightgray #bdae93
 
 bar {
     position bottom
+    font pango: Noto Sans Regular 10
     status_command i3blocks -c ~/.config/i3/i3blocks.conf
 #    i3bar_command i3bar --transparency
     colors {
@@ -566,7 +567,7 @@ bar {
 }
 
 # class                 border|backgr|text|indicator|child_border
-client.focused          $lightgray $lightgray $bg $purple $darkgray
+client.focused          $lightgray $lightgray $bg $purple $gray
 client.focused_inactive $darkgray $darkgray $lightgray $purple $darkgray
 client.unfocused        $darkgray $darkgray $lightgray $purple $darkgray
 client.urgent           $red $red $white $red $red
