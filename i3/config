@@ -185,7 +185,7 @@ bindsym $mod+Shift+e exec --no-startup-id ~/.config/i3/scripts/powermenu
 # lock with a picture:
 #bindsym $mod+l exec --no-startup-id i3lock -i  ~/.config/i3/i3-lock-screen.png -p default|win -t
 # lock by blurring the screen:
-bindsym $mod+Alt+l exec --no-startup-id ~/.config/i3/scripts/blur-lock
+bindsym $mod+F2 exec --no-startup-id ~/.config/i3/scripts/blur-lock
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
@@ -393,11 +393,13 @@ exec --no-startup-id dex --autostart --environment i3
 
 # start a script to setup displays
 # uncomment the next line, use arandr to setup displays and save the file as monitor:
-exec --no-startup-id ~/.screenlayout/monitor.sh
+exec_always --no-startup-id ~/.screenlayout/monitor.sh
 
 # set wallpaper
 # exec --no-startup-id sleep 2 && nitrogen --restore
-exec_always --no-startup-id sleep 1 && feh --bg-fill /home/sai/Pictures/wallpapers/wallpaper.png 
+# Set screen layout
+#exec ~/.screenlayout/layout.sh
+exec_always --no-startup-id sleep 2 && feh --bg-fill /home/sai/Pictures/wallpapers/Seiko_grandma.jpg
 
 # set powersavings for display:
 exec --no-startup-id xset s 480 dpms 600 600 600
@@ -549,7 +551,7 @@ set $lightgray #bdae93
 
 bar {
     position bottom
-    font pango: Noto Sans Regular 10
+    font pango: Noto Sans Regular 12
     status_command i3blocks -c ~/.config/i3/i3blocks.conf
 #    i3bar_command i3bar --transparency
     colors {
@@ -631,3 +633,4 @@ bindsym $mod+t exec --no-startup-id rofi -show window \
 #exec --no-startup-id greenclip daemon>/dev/null
 #bindsym $mod+c exec --no-startup-id rofi -modi "clipboard:greenclip print" -show clipboard \
 #		-config ~/.config/rofi/rofidmenu.rasi
+
