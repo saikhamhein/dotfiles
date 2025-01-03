@@ -395,11 +395,16 @@ exec --no-startup-id dex --autostart --environment i3
 # uncomment the next line, use arandr to setup displays and save the file as monitor:
 exec_always --no-startup-id ~/.screenlayout/monitor.sh
 
+#shortcuts to set monitors
+bindsym $mod+F7 exec ~/.screenlayout/monitor.sh
+bindsym $mod+F5 exec ~/.screenlayout/external_monitor.sh
+bindsym $mod+F6 exec ~/.screenlayout/internal_monitor.sh
+
 # set wallpaper
 # exec --no-startup-id sleep 2 && nitrogen --restore
 # Set screen layout
 #exec ~/.screenlayout/layout.sh
-exec_always --no-startup-id sleep 2 && feh --bg-fill /home/sai/Pictures/wallpapers/Seiko_grandma.jpg
+exec_always --no-startup-id sleep 3 && feh --bg-fill /home/sai/Pictures/wallpapers/Seiko_grandma.jpg
 
 # set powersavings for display:
 exec --no-startup-id xset s 480 dpms 600 600 600
