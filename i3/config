@@ -48,7 +48,7 @@ workspace_layout default
 ##############################
 
 #border indicator on windows:
-new_window pixel 1
+new_window pixel 3
 
 # thin borders
 # hide_edge_borders both
@@ -577,9 +577,9 @@ bar {
 }
 
 # class                 border|backgr|text|indicator|child_border
-client.focused          $lightgray $lightgray $bg $purple $gray
-client.focused_inactive $darkgray $darkgray $lightgray $purple $darkgray
-client.unfocused        $darkgray $darkgray $lightgray $purple $darkgray
+client.focused          $lightgray $lightgray $bg $aqua $aqua
+client.focused_inactive $darkgray $darkgray $lightgray $darkgray  $darkgray
+client.unfocused        $darkgray $darkgray $lightgray $darkgray $darkgray
 client.urgent           $red $red $white $red $red
 
 # Gruvbox colorsheme end
