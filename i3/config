@@ -396,15 +396,18 @@ exec --no-startup-id dex --autostart --environment i3
 exec --no-startup-id ~/.screenlayout/monitor.sh
 
 #shortcuts to set monitors
-bindsym $mod+F7 exec ~/.screenlayout/monitor.sh
-bindsym $mod+F5 exec ~/.screenlayout/external_monitor.sh
-bindsym $mod+F6 exec ~/.screenlayout/internal_monitor.sh
+bindsym $mod+F7 exec ~/.screenlayout/monitor.sh && feh --bg-fill /home/sai/Pictures/wallpapers/Seiko_grandma.jpg
+bindsym $mod+F5 exec ~/.screenlayout/external_monitor.sh && feh --bg-fill /home/sai/Pictures/wallpapers/Seiko_grandma.jpg
+bindsym $mod+F6 exec ~/.screenlayout/internal_monitor.sh && feh --bg-fill /home/sai/Pictures/wallpapers/Seiko_grandma.jpg
 
 # set wallpaper
 # exec --no-startup-id sleep 2 && nitrogen --restore
 # Set screen layout
 #exec ~/.screenlayout/layout.sh
 exec_always --no-startup-id sleep 3 && feh --bg-fill /home/sai/Pictures/wallpapers/Seiko_grandma.jpg
+
+# Start autolayout
+exec_always --no-startup-id i3-autolayout autolayout
 
 # set powersavings for display:
 exec --no-startup-id xset s 480 dpms 600 600 600
