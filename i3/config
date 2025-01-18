@@ -291,7 +291,7 @@ bindsym $mod+p exec --no-startup-id /usr/local/bin/switch-audio-port
 bindsym $mod+w exec --no-startup-id /usr/bin/firefox
 bindsym $mod+n exec --no-startup-id /usr/bin/thunar
 bindsym Print exec --no-startup-id scrot ~/%Y-%m-%d-%T-screenshot.png && notify-send "Screenshot saved to ~/$(date +"%Y-%m-%d-%T")-screenshot.png"
-
+bindsym $mod+Shift+s exec --no-startup-id flameshot gui
 # Power Profiles menu switcher (rofi)
 bindsym $mod+Shift+p exec --no-startup-id ~/.config/i3/scripts/power-profiles
 
@@ -396,9 +396,9 @@ exec --no-startup-id dex --autostart --environment i3
 exec --no-startup-id ~/.screenlayout/monitor.sh
 
 #shortcuts to set monitors
-bindsym $mod+F7 exec ~/.screenlayout/monitor.sh && feh --bg-fill /home/sai/Pictures/wallpapers/Seiko_grandma.jpg
-bindsym $mod+F5 exec ~/.screenlayout/external_monitor.sh && feh --bg-fill /home/sai/Pictures/wallpapers/Seiko_grandma.jpg
-bindsym $mod+F6 exec ~/.screenlayout/internal_monitor.sh && feh --bg-fill /home/sai/Pictures/wallpapers/Seiko_grandma.jpg
+bindsym $mod+F7 exec --no-startup-id ~/.screenlayout/monitor.sh && feh --bg-fill /home/sai/Pictures/wallpapers/Seiko_grandma.jpg
+bindsym $mod+F5 exec --no-startup-id ~/.screenlayout/external_monitor.sh && feh --bg-fill /home/sai/Pictures/wallpapers/Seiko_grandma.jpg
+bindsym $mod+F6 exec --no-startup-id ~/.screenlayout/internal_monitor.sh && feh --bg-fill /home/sai/Pictures/wallpapers/Seiko_grandma.jpg
 
 # set wallpaper
 # exec --no-startup-id sleep 2 && nitrogen --restore
