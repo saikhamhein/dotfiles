@@ -386,29 +386,28 @@ exec --no-startup-id dex --autostart --environment i3
 #exec --no-startup-id numlockx on
 
 # configure multiple keyboard layouts and hotkey to switch (Alt+CAPSLOCK in this example)
-#exec --no-startup-id setxkbmap -layout 'us,sk' -variant altgr-intl,qwerty -option 'grp:alt_caps_toggle'
+exec --no-startup-id setxkbmap -layout 'us,mm' -variant altgr-intl,qwerty -option 'grp:alt_shitf_toggle'
 
 # start conky:
 #exec_always --no-startup-id conky
+
+# Start autolayout
+exec --no-startup-id i3-autolayout autolayout
 
 # start a script to setup displays
 # uncomment the next line, use arandr to setup displays and save the file as monitor:
 exec --no-startup-id ~/.screenlayout/monitor.sh
 
+set $WALLPAPER /home/sai/Pictures/wallpapers/003.jpg
 #shortcuts to set monitors
-bindsym $mod+F7 exec --no-startup-id ~/.screenlayout/monitor.sh && feh --bg-fill /home/sai/Pictures/wallpapers/Seiko_grandma.jpg
-bindsym $mod+F5 exec --no-startup-id ~/.screenlayout/external_monitor.sh && feh --bg-fill /home/sai/Pictures/wallpapers/Seiko_grandma.jpg
-bindsym $mod+F6 exec --no-startup-id ~/.screenlayout/internal_monitor.sh && feh --bg-fill /home/sai/Pictures/wallpapers/Seiko_grandma.jpg
-
+bindsym $mod+F7 exec --no-startup-id ~/.screenlayout/monitor.sh && feh --bg-fill WALLPAPER
+bindsym $mod+F5 exec --no-startup-id ~/.screenlayout/external_monitor.sh && feh --bg-fill WALLPAPER
+bindsym $mod+F6 exec --no-startup-id ~/.screenlayout/internal_monitor.sh && feh --bg-fill WALLPAPER
 # set wallpaper
 # exec --no-startup-id sleep 2 && nitrogen --restore
 # Set screen layout
 #exec ~/.screenlayout/layout.sh
-exec_always --no-startup-id sleep 3 && feh --bg-fill /home/sai/Pictures/wallpapers/Seiko_grandma.jpg
-
-# Start autolayout
-exec_always --no-startup-id i3-autolayout autolayout
-
+exec_always --no-startup-id sleep 3 && feh --bg-fill WALLPAPER
 # set powersavings for display:
 exec --no-startup-id xset s 480 dpms 600 600 600
 
