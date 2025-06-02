@@ -392,22 +392,22 @@ exec --no-startup-id setxkbmap -layout 'us,mm' -variant altgr-intl,qwerty -optio
 #exec_always --no-startup-id conky
 
 # Start autolayout
-exec --no-startup-id i3-autolayout autolayout
+# exec --no-startup-id i3-autolayout autolayout
 
 # start a script to setup displays
 # uncomment the next line, use arandr to setup displays and save the file as monitor:
 exec --no-startup-id ~/.screenlayout/monitor.sh
 
-set $wallpaper '/home/sai/Pictures/wallpapers/003.jpg'
-#shortcuts to set monitors
-bindsym $mod+F7 exec --no-startup-id ~/.screenlayout/monitor.sh && feh --bg-fill $wallpaper
-bindsym $mod+F5 exec --no-startup-id ~/.screenlayout/external_monitor.sh && feh --bg-fill $wallpaper
-bindsym $mod+F6 exec --no-startup-id ~/.screenlayout/internal_monitor.sh && feh --bg-fill $wallpaper
-# set wallpaper
-# exec --no-startup-id sleep 2 && nitrogen --restore
-# Set screen layout
-#exec ~/.screenlayout/layout.sh
-exec_always --no-startup-id sleep 3 && feh --bg-fill $wallpaper
+# Wallpaper
+# #shortcuts to set monitors
+bindsym $mod+F7 exec --no-startup-id ~/.screenlayout/monitor.sh 
+bindsym $mod+F5 exec --no-startup-id ~/.screenlayout/external_monitor.sh 
+bindsym $mod+F6 exec --no-startup-id ~/.screenlayout/internal_monitor.sh 
+# exec_always --no-startup-id sleep 3 && feh --bg-fill $wallpaper
+bindsym $mod+Shift+w exec /home/sai/.local/bin/wall-d -Rfp -d ~/Pictures/wallpapers 
+# restore previous wallpaper
+exec_always --no-startup-id wall-d -f -r -p
+
 # set powersavings for display:
 exec --no-startup-id xset s 480 dpms 600 600 600
 
@@ -466,6 +466,7 @@ exec --no-startup-id /usr/bin/dunst
 for_window [class="Yad" instance="yad"] floating enable
 for_window [class="Galculator" instance="galculator"] floating enable
 for_window [class="Blueberry.py" instance="blueberry.py"] floating enable
+for_window [class="Sxiv"] floating enable
 
 # set floating (nontiling) for special apps
 for_window [class="Xsane" instance="xsane"] floating enable
@@ -545,16 +546,85 @@ for_window [class="urxvt"] border pixel 1
 #}
 
 # Gruvbox colorscheme from https://github.com/jmattheis/i3wm-gruvbox-dark
-set $bg #282828
-set $red #cc241d
-set $green #98971a
-set $yellow #d79921
-set $blue #458588
-set $purple #b16286
-set $aqua #689d68
-set $gray #a89984
-set $darkgray #1d2021
-set $lightgray #bdae93
+# set $bg #282828
+# set $red #cc241d
+# set $green #98971a
+# set $yellow #d79921
+# set $blue #458588
+# set $purple #b16286
+# set $aqua #689d68
+# set $gray #a89984
+# set $darkgray #1d2021
+# set $lightgray #bdae93
+#
+# bar {
+#     position bottom
+#     font pango: Noto Sans Regular 12
+#     status_command i3blocks -c ~/.config/i3/i3blocks.conf
+# #    i3bar_command i3bar --transparency
+#     colors {
+#         # bar background color
+#         background $bg
+#         # text color used for blocks that do not have a color specified.
+#         statusline $lightgray
+#         # workspaces section            
+#         #                    border  backgr. text
+#         focused_workspace    $lightgray $lightgray $bg
+#         inactive_workspace   $darkgray $darkgray $lightgray
+#         active_workspace     $darkgray $darkgray $lightgray
+#         urgent_workspace     $red $red $bg
+#     }
+# }
+#
+# # class                 border|backgr|text|indicator|child_border
+# client.focused          $lightgray $lightgray $bg $aqua $aqua
+# client.focused_inactive $darkgray $darkgray $lightgray $darkgray  $darkgray
+# client.unfocused        $darkgray $darkgray $lightgray $darkgray $darkgray
+# client.urgent           $red $red $white $red $red
+#
+# Gruvbox colorsheme end
+
+# Set colors from Xresources
+# Change 'color7' and 'color2' to whatever colors you want i3 to use 
+# from the generated scheme.
+# NOTE: The '#f0f0f0' in the lines below is the color i3 will use if
+# it fails to get colors from Xresources.
+set_from_resource $fg    i3wm.foreground #ff00f0
+set_from_resource $bg    i3wm.background #ff00f0
+set_from_resource $c0    i3wm.color0     #ff00f0
+set_from_resource $c1    i3wm.color1     #ff00f0
+set_from_resource $c2    i3wm.color2     #ff00f0
+set_from_resource $c3    i3wm.color3     #ff00f0
+set_from_resource $c4    i3wm.color4     #ff00f0
+set_from_resource $c5    i3wm.color5     #ff00f0
+set_from_resource $c6    i3wm.color6     #ff00f0
+set_from_resource $c7    i3wm.color7     #ff00f0
+set_from_resource $c8    i3wm.color8     #ff00f0
+set_from_resource $c9    i3wm.color9     #ff00f0
+set_from_resource $c10   i3wm.color10    #ff00f0
+set_from_resource $c11   i3wm.color11    #ff00f0
+set_from_resource $c12   i3wm.color12    #ff00f0
+set_from_resource $c13   i3wm.color13    #ff00f0
+set_from_resource $c14   i3wm.color14    #ff00f0
+set_from_resource $c15   i3wm.color15    #ff00f0
+
+# class                 border  backgr. text indicator child_border
+client.focused          $bg     $bg     $c7  $bg       $c2
+client.focused_inactive $bg     $bg     $c7  $bg       $bg
+client.unfocused        $bg     $bg     $c7  $bg       $bg
+client.urgent           $bg     $bg     $c7  $bg       $bg
+client.placeholder      $bg     $bg     $c7  $bg       $bg
+client.background       $bg
+
+# i3status
+# bar {
+#     status_command i3status
+#     colors {
+#         background $bg
+#         statusline $fg
+#         separator $fg
+#     }
+# }
 
 bar {
     position bottom
@@ -565,24 +635,17 @@ bar {
         # bar background color
         background $bg
         # text color used for blocks that do not have a color specified.
-        statusline $lightgray
+        statusline $c7
         # workspaces section            
         #                    border  backgr. text
-        focused_workspace    $lightgray $lightgray $bg
-        inactive_workspace   $darkgray $darkgray $lightgray
-        active_workspace     $darkgray $darkgray $lightgray
-        urgent_workspace     $red $red $bg
+        focused_workspace    $bg     $fg     $bg
+        inactive_workspace   $fg     $bg     $c6
+        active_workspace     $fg     $bg     $c6
+        urgent_workspace     $fg     $bg     $c6
     }
 }
-
-# class                 border|backgr|text|indicator|child_border
-client.focused          $lightgray $lightgray $bg $aqua $aqua
-client.focused_inactive $darkgray $darkgray $lightgray $darkgray  $darkgray
-client.unfocused        $darkgray $darkgray $lightgray $darkgray $darkgray
-client.urgent           $red $red $white $red $red
-
-# Gruvbox colorsheme end
-
+# PROTIP: You can also dynamically set dmenu's colors this way:
+# bindsym $mod+d exec dmenu_run -nb "$fg" -nf "$bg" -sb "$bg" -sf "$fg"
 
 # you can add different bars for multidisplay setups on each display:
 # set output HDMI-0 to the display you want the bar, --transparency can be set.
