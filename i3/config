@@ -355,8 +355,7 @@ for_window [class=TelegramDesktop] focus
 #
 # picom: https://wiki.archlinux.org/title/Picom
 # manpage: https://man.archlinux.org/man/picom.1.en
-# The default configuration is available in /etc/xdg/picom.conf 
-# For modifications, it can be copied to ~/.config/picom/picom.conf or ~/.config/picom.conf
+# The default configuration is available in /etc/xdg/picom.conf For modifications, it can be copied to ~/.config/picom/picom.conf or ~/.config/picom.conf
 # install picom package (yay -S picom)
 # start using default config 
 #exec_always --no-startup-id picom -b
@@ -398,15 +397,15 @@ exec --no-startup-id setxkbmap -layout 'us,mm' -variant altgr-intl,qwerty -optio
 # uncomment the next line, use arandr to setup displays and save the file as monitor:
 exec --no-startup-id ~/.screenlayout/monitor.sh
 
-# Wallpaper
 # #shortcuts to set monitors
-bindsym $mod+F7 exec --no-startup-id ~/.screenlayout/monitor.sh 
-bindsym $mod+F5 exec --no-startup-id ~/.screenlayout/external_monitor.sh 
-bindsym $mod+F6 exec --no-startup-id ~/.screenlayout/internal_monitor.sh 
+bindsym $mod+F7 exec --no-startup-id ~/.screenlayout/monitor.sh && sleep 1 && /usr/bin/wal -R
+bindsym $mod+F5 exec --no-startup-id ~/.screenlayout/external_monitor.sh && sleep 1 && /usr/bin/wal -R
+bindsym $mod+F6 exec --no-startup-id ~/.screenlayout/internal_monitor.sh && sleep 1 && /usr/bin/wal -R
 # exec_always --no-startup-id sleep 3 && feh --bg-fill $wallpaper
 bindsym $mod+Shift+w exec /home/sai/.local/bin/wall-d -Rfp -d ~/Pictures/wallpapers 
 # restore previous wallpaper
-exec_always --no-startup-id wall-d -f -r -p
+# exec_always --no-startup-id /home/sai/.local/bin/wall-d -rfp && /home/sai/.local/bin/wal -R
+exec_always --no-startup-id /usr/bin/wal -R
 
 # set powersavings for display:
 exec --no-startup-id xset s 480 dpms 600 600 600
@@ -467,6 +466,7 @@ for_window [class="Yad" instance="yad"] floating enable
 for_window [class="Galculator" instance="galculator"] floating enable
 for_window [class="Blueberry.py" instance="blueberry.py"] floating enable
 for_window [class="Sxiv"] floating enable
+for_window [class="TelegramDesktop"] floating enable
 
 # set floating (nontiling) for special apps
 for_window [class="Xsane" instance="xsane"] floating enable
@@ -609,7 +609,7 @@ set_from_resource $c14   i3wm.color14    #ff00f0
 set_from_resource $c15   i3wm.color15    #ff00f0
 
 # class                 border  backgr. text indicator child_border
-client.focused          $bg     $bg     $c7  $bg       $c2
+client.focused          $fg     $fg     $bg  $bg       $c2
 client.focused_inactive $bg     $bg     $c7  $bg       $bg
 client.unfocused        $bg     $bg     $c7  $bg       $bg
 client.urgent           $bg     $bg     $c7  $bg       $bg
