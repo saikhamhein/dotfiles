@@ -31,31 +31,31 @@ ueberzug_offset = [ 0, 0, 0, 0 ]
 
 [opener]
 edit = [
-	{ run = 'nvim "$@"', desc = "Neovim", block = true, for = "unix" },
-	{ run = 'code %*',    orphan = true, desc = "code",           for = "windows" },
-	{ run = 'code -w %*', block = true,  desc = "code (block)",   for = "windows" },
+	{ exec = 'nvim "$@"', desc = "Neovim", block = true, for = "unix" },
+	{ exec = 'code %*',    orphan = true, desc = "code",           for = "windows" },
+	{ exec = 'code -w %*', block = true,  desc = "code (block)",   for = "windows" },
 ]
 open = [
-	{ run = 'xdg-open "$1"',                desc = "Open", for = "linux" },
-	{ run = 'open "$@"',                    desc = "Open", for = "macos" },
-	{ run = 'start "" "%1"', orphan = true, desc = "Open", for = "windows" },
-	{ run = 'termux-open "$1"',             desc = "Open", for = "android" },
+	{ exec = 'xdg-open "$1"',                desc = "Open", for = "linux" },
+	{ exec = 'open "$@"',                    desc = "Open", for = "macos" },
+	{ exec = 'start "" "%1"', orphan = true, desc = "Open", for = "windows" },
+	{ exec = 'termux-open "$1"',             desc = "Open", for = "android" },
 ]
 reveal = [
-	{ run = 'xdg-open "$(dirname "$1")"',           desc = "Reveal", for = "linux" },
-	{ run = 'open -R "$1"',                         desc = "Reveal", for = "macos" },
-	{ run = 'explorer /select,"%1"', orphan = true, desc = "Reveal", for = "windows" },
-	{ run = 'termux-open "$(dirname "$1")"',        desc = "Reveal", for = "android" },
-	{ run = '''exiftool "$1"; echo "Press enter to exit"; read _''', block = true, desc = "Show EXIF", for = "unix" },
+	{ exec = 'xdg-open "$(dirname "$1")"',           desc = "Reveal", for = "linux" },
+	{ exec = 'open -R "$1"',                         desc = "Reveal", for = "macos" },
+	{ exec = 'explorer /select,"%1"', orphan = true, desc = "Reveal", for = "windows" },
+	{ exec = 'termux-open "$(dirname "$1")"',        desc = "Reveal", for = "android" },
+	{ exec = '''exiftool "$1"; echo "Press enter to exit"; read _''', block = true, desc = "Show EXIF", for = "unix" },
 ]
 extract = [
-	{ run = 'ya pub extract --list "$@"', desc = "Extract here", for = "unix" },
-	{ run = 'ya pub extract --list %*',   desc = "Extract here", for = "windows" },
+	{ exec = 'ya pub extract --list "$@"', desc = "Extract here", for = "unix" },
+	{ exec = 'ya pub extract --list %*',   desc = "Extract here", for = "windows" },
 ]
 play = [
-	{ run = 'mpv --force-window "$@"', orphan = true, for = "unix" },
-	{ run = 'mpv --force-window %*', orphan = true, for = "windows" },
-	{ run = '''mediainfo "$1"; echo "Press enter to exit"; read _''', block = true, desc = "Show media info", for = "unix" },
+	{ exec = 'mpv --force-window "$@"', orphan = true, for = "unix" },
+	{ exec = 'mpv --force-window %*', orphan = true, for = "windows" },
+	{ exec = '''mediainfo "$1"; echo "Press enter to exit"; read _''', block = true, desc = "Show media info", for = "unix" },
 ]
 
 [open]
