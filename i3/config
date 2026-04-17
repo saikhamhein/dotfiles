@@ -402,10 +402,10 @@ bindsym $mod+F7 exec --no-startup-id ~/.screenlayout/monitor.sh && sleep 1 && /u
 bindsym $mod+F5 exec --no-startup-id ~/.screenlayout/external_monitor.sh && sleep 1 && /usr/bin/wal -R
 bindsym $mod+F6 exec --no-startup-id ~/.screenlayout/internal_monitor.sh && sleep 1 && /usr/bin/wal -R
 # exec_always --no-startup-id sleep 3 && feh --bg-fill $wallpaper
-bindsym $mod+Shift+w exec /home/sai/.local/bin/wall-d -Rfp -d ~/Pictures/wallpapers 
+bindsym $mod+Shift+w exec wall-d -Rfp -d ~/Pictures/wallpapers 
 # restore previous wallpaper
 # exec_always --no-startup-id /home/sai/.local/bin/wall-d -rfp && /home/sai/.local/bin/wal -R
-exec_always --no-startup-id /usr/bin/wal -R
+exec_always --no-startup-id wal -R
 
 # set powersavings for display:
 exec --no-startup-id xset s 480 dpms 600 600 600
