@@ -33,7 +33,7 @@ mainbox {
 }
 message {
     border:       2px 0px 0px;
-    border-color: @separatorcolor;
+    border-color: @background;
     padding:      1px;
 }
 textbox {
@@ -42,7 +42,7 @@ textbox {
 listview {
     fixed-height: 0;
     border:       8px 0px 0px;
-    border-color: @separatorcolor;
+    border-color: @background;
     spacing:      8px;
     scrollbar:    false;
     padding:      2px 0px 0px;
@@ -100,7 +100,7 @@ scrollbar {
 }
 mode-switcher {
     border:       2px 0px 0px;
-    border-color: @separatorcolor;
+    border-color: @background;
 }
 button {
     spacing:    0;
