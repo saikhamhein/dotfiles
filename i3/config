@@ -23,7 +23,9 @@
 # is used in the bar {} block below.
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
-font pango: Noto Sans Regular 10
+set $font JetBrainsMono Nerd Font
+
+font pango: $font 10
 
 # set the mod key to the winkey:
 set $mod Mod4
@@ -628,9 +630,9 @@ client.background       $bg
 
 bar {
     position bottom
-    font pango: Noto Sans Regular 12
+    font pango: $font 12
     status_command i3blocks -c ~/.config/i3/i3blocks.conf
-#    i3bar_command i3bar --transparency
+    # i3bar_command i3bar --transparency
     colors {
         # bar background color
         background $bg
