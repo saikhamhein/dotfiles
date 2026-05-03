@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+#
+# options=" Lock\n Suspend\n Logout\n Reboot\n Shutdown"
+options=" \n \n \n \n "
+
+chosen=$(echo -e "$options" | rofi -dmenu -i -p "Power" -theme ~/.config/rofi/powermenu2.rasi)
+
+case "$chosen" in
+" Lock") ~/.config/i3/scripts/blur-lock ;;
+" Suspend") systemctl suspend ;;
+" Logout") i3-msg exit ;;
+" Reboot") systemctl reboot ;;
+" Shutdown") systemctl poweroff ;;
+esac

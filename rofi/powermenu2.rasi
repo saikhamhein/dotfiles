@@ -1,0 +1,36 @@
+configuration {
+    font: "JetBrainsMono Nerd Font 20";
+    show-icons: false;  // keep using glyphs
+}
+
+@import "~/.config/rofi/config.rasi"
+
+window {
+    width: 760px;
+    padding: 0px 0px;
+    border-radius: 20px;
+    location: center;
+    anchor: center;
+}
+
+mainbox {
+    children: [ listview ];
+}
+
+listview {
+    columns: 5;
+    lines: 1;
+    scrollbar: false;
+    border: 0px 0px;
+}
+
+element {
+    /* Top/Bottom Left/Right */
+    padding: 10px 10px;
+    border-radius: 20px;
+}
+
+element-text {
+    horizontal-align: 0.5;
+    vertical-align: 0.5;
+}
