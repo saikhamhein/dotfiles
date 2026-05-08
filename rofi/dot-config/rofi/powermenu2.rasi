@@ -1,36 +1,47 @@
 configuration {
     font: "JetBrainsMono Nerd Font 20";
-    show-icons: false;  // keep using glyphs
+    show-icons: false;  /* keep using glyphs */
 }
 
 @import "~/.config/rofi/config.rasi"
 
-window {
+#window {
+    background-color: @background;
     width: 760px;
-    padding: 0px 0px;
+    padding: 0px;
     border-radius: 20px;
+    border: 0px;
     location: center;
     anchor: center;
 }
 
-mainbox {
+#mainbox {
     children: [ listview ];
 }
 
-listview {
+#listview {
     columns: 5;
     lines: 1;
+    spacing: 14px;
+    fixed-height: true;
     scrollbar: false;
-    border: 0px 0px;
+    border: 0px;
+    padding: 12px;
 }
 
-element {
+#element {
+    background-color: @normal-background;
     /* Top/Bottom Left/Right */
     padding: 10px 10px;
     border-radius: 20px;
 }
 
-element-text {
+#element.selected.normal {
+    background-color: @selected-normal-background;
+}
+
+#element-text {
+    text-color: @normal-foreground;
     horizontal-align: 0.5;
     vertical-align: 0.5;
 }
