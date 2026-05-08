@@ -485,9 +485,12 @@ for_window [class="urxvt"] border pixel 1
 # set size of floating window
 #for_window [window_role="(?i)GtkFileChooserDialog"] resize set 640 480 #to set size of file choose dialog
 #for_window [class=".*"] resize set 640 480 #to change size of all floating windows 
+for_window [class="Blueman-manager"] floating enable, resize set 640 480
+for_window [class="Arandr"] floating enable, resize set 640 480
+for_window [class="wechat"] floating enable, resize set 800 600
 
 # set position of floating window
-#for_window [class=".*"] move position center
+for_window [class=".*"] move position center
 
 ######################################
 # color settings for bar and windows #
