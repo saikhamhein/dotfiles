@@ -118,14 +118,35 @@ fi
 # default_menu_options defined as an associative array
 typeset -A default_menu_options
 
+# Detect hardware
+# asusctl is required for asus devices
+if grep -q "ASUS" /sys/class/dmi/id/sys_vendor 2>/dev/null; then
+    # Use asusctl for ASUS hardware
+    default_menu_options=(
+      [ Performance]="asusctl profile set Performance"
+      [ Balanced]="asusctl profile set Balanced"
+      [ Quiet]="asusctl profile set Quiet"
+      [ Cancel]=""
+    )
+else
+    # Use powerprofilesctl for everything else
+    default_menu_options=(
+      [ Performance]="powerprofilesctl set performance"
+      [ Balanced]="powerprofilesctl set balanced"
+      [ Power Saver]="powerprofilesctl set power-saver"
+      [ Cancel]=""
+    )
+fi
+
 # The default options with keys/commands
 
-default_menu_options=(
-  [ Performance]="powerprofilesctl set performance"
-  [ Balanced]="powerprofilesctl set balanced"
-  [ Power Saver]="powerprofilesctl set power-saver"
-  [ Cancel]=""
-)
+# default_menu_options=(
+#   [ Performance]="powerprofilesctl set performance"
+#   [ Balanced]="powerprofilesctl set balanced"
+#   [ Power Saver]="powerprofilesctl set power-saver"
+#   [ Cancel]=""
+# )
+
 
 # The menu that will be displayed
 typeset -A menu
@@ -135,6 +156,9 @@ menu=()
 for key in "${!default_menu_options[@]}"; do
   grep_arg=${default_menu_options[${key}]##* }
   if powerprofilesctl list | grep -q "$grep_arg"; then
+    menu[${key}]=${default_menu_options[${key}]}
+  fi
+  if asusctl profile list | grep -q "$grep_arg"; then
     menu[${key}]=${default_menu_options[${key}]}
   fi
 done
