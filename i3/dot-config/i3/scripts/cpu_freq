@@ -1,0 +1,43 @@
+#!/usr/bin/env bash
+
+freq_khz=""
+cpu_count=0
+
+for path in /sys/devices/system/cpu/cpu*/cpufreq/scaling_cur_freq; do
+  if [ -r "$path" ]; then
+    value=$(cat "$path")
+    if [ -n "$value" ]; then
+      freq_khz=$((freq_khz + value))
+      cpu_count=$((cpu_count + 1))
+    fi
+  fi
+done
+
+if [ -n "$freq_khz" ] && [ "$cpu_count" -gt 0 ]; then
+  freq=$(awk -v total="$freq_khz" -v count="$cpu_count" 'BEGIN { printf "%.2f", total / count / 1000000 }')
+  echo "${freq}GHz"
+  echo "${freq}GHz"
+  exit 0
+fi
+
+freq=$(awk -F': ' '
+  /cpu MHz/ {
+    total += $2
+    count++
+  }
+  END {
+    if (count > 0) {
+      printf "%.2f", total / count / 1000
+    } else {
+      printf "N/A"
+    }
+  }
+' /proc/cpuinfo)
+
+if [ "$freq" = "N/A" ]; then
+  echo "$freq"
+  echo "$freq"
+else
+  echo "${freq}GHz"
+  echo "${freq}GHz"
+fi
